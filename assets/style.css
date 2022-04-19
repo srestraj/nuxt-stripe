@@ -279,7 +279,21 @@ body {
 .product__button--success span:first-child {
   top: -4rem;
 }
-
+.ion-load-c {
+  display: inline-block;
+  font-size: 1.3rem;
+  transform: rotate(0);
+  transition: all 1s ease-in-out;
+  animation: rotate 1s infinite;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 @media (max-width: 992px) {
     .container::before {
         width: 100%;

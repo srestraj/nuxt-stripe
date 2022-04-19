@@ -35,6 +35,7 @@ export default {
     LOCALE: process.env.LOCALE,
     STRIPE_API_URL: process.env.STRIPE_API_URL,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+    ROOT_URL: process.env.ROOT_URL,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -59,7 +60,29 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/toast'
   ],
+  toast: {
+    position: 'bottom-right',
+    theme: 'outline',
+    duration : 3000,
+    register: [ // Register custom toasts
+      {
+        name: 'error',
+        message: 'Payment Canceled',
+        options: {
+          type: 'error'
+        }
+      },
+      {
+        name: 'success',
+        message: 'Payment successful',
+        options: {
+          type: 'success'
+        }
+      },
+    ]
+},
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

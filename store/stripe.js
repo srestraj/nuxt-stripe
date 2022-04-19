@@ -9,6 +9,7 @@ export const state = () => ({
       if(payload.length > 0) {
           for (let i = 0; i < payload.length; i++) {
               payload[i].price = state.prices[i].unit_amount
+              payload[i].priceID = state.prices[i].id
           }
       }
       state.products = payload
@@ -22,11 +23,12 @@ export const state = () => ({
     }
   }
   export const actions = {
+    // on production, this should be called from your backend server
     async getProducts({ commit }) {
         await this.$axios
           .get('/products', {
               headers: {
-                  'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`,
+                  'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`, // never reveal your secret key - this is for demo purposes only
               }
           })
           .then((response) => {
@@ -40,10 +42,11 @@ export const state = () => ({
 
     async getPrices({ commit, dispatch }) {
       commit('storeStatus', true)
+      // on production, this should be called from your backend server
       await this.$axios
         .get('/prices', {
             headers: {
-                'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`,
+                'Authorization': `Bearer ${process.env.STRIPE_SECRET_KEY}`, // never reveal your secret key - this is for demo purposes only
             }
         })
         .then((response) => {
