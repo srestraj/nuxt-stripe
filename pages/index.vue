@@ -7,7 +7,7 @@
         </div>
         <div class="product-detail">
           <h1 class="product__title">{{ product.name }}</h1>
-          <div class="product__price">${{ product.price }}</div>
+          <div class="product__price">${{ (product.price / 100).toFixed(2) }}</div>
           <div class="product__subtitle">{{ product.description }}</div>
           
           <a class="product__button" href="#">
