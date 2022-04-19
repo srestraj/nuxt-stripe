@@ -29,7 +29,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch('stripe/getProducts')
+    this.$store.dispatch('stripe/getPrices')
   }
 }
 </script>
